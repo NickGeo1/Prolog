@@ -1,0 +1,178 @@
+family(
+	person(
+		firstname(toby),
+		lastname(lee),
+		gender(male),
+		dob(11,may,1975),
+		works(hsbc)
+	), 
+	person(
+		firstname(crystal),
+		lastname(lee),
+		gender(female),
+		dob(21,september,1978),
+		works(tesco)
+	),
+	children([
+		person(
+			firstname(erik),
+			lastname(lee),
+			gender(male),
+			dob(6,august,2001),
+			unemployed
+		),
+		person(
+			firstname(ken),
+			lastname(lee),
+			gender(male),
+			dob(29,june,2002),
+			unemployed
+		),
+		person(
+			firstname(cindy),
+			lastname(lee),
+			gender(female),
+			dob(01,october,2003),
+			unemployed
+		)
+	])
+).
+
+
+family(
+	person(
+		firstname(lucas),
+		lastname(young),
+		gender(male),
+		dob(08,april,1972),
+		works(vodafone)
+	), 
+	person(
+		firstname(tracy),
+		lastname(young),
+		gender(female),
+		dob(23,december,1970),
+		works(aviva)
+	),
+	children([
+		person(
+			firstname(oscar),
+			lastname(young),
+			gender(male),
+			dob(26,august,2002),
+			unemployed
+		),
+		person(
+			firstname(mary),
+			lastname(young),
+			gender(female),
+			dob(19,jule,2005),
+			unemployed
+		),
+		person(
+			firstname(cindy),
+			lastname(young),
+			gender(female),
+			dob(08,february,2007),
+			unemployed
+		),
+		person(
+			firstname(tina),
+			lastname(young),
+			gender(female),
+			dob(28,january,2006),
+			unemployed
+		)
+	])
+).
+
+
+family(
+	person(
+		firstname(harry),
+		lastname(jones),
+		gender(male),
+		dob(04,march,1980),
+		works(centrica)
+	), 
+	person(
+		firstname(mary),
+		lastname(jones),
+		gender(female),
+		dob(17,december,1976),
+		works(vodafone)
+	),
+	children([
+		person(
+			firstname(ken),
+			lastname(jones),
+			gender(male),
+			dob(6,may,2003),
+			unemployed
+		),
+		person(
+			firstname(lori),
+			lastname(jones),
+			gender(female),
+			dob(17,november,2009),
+			unemployed
+		)
+	])
+).
+
+
+family(
+	person(
+		firstname(cole),
+		lastname(parks),
+		gender(male),
+		dob(02,may,1977),
+		works(prudential)
+	), 
+	person(
+		firstname(melissa),
+		lastname(parks),
+		gender(female),
+		dob(30,april,1983),
+		works(hsbc)
+	),
+	children([
+		person(
+			firstname(nina),
+			lastname(parks),
+			gender(female),
+			dob(6,may,2009),
+			unemployed
+		),
+		person(
+			firstname(victoria),
+			lastname(parks),
+			gender(female),
+			dob(27,february,2011),
+			unemployed
+		)
+	])
+).
+
+
+get_names():-
+	family(person(F1, L, gender(male), _, _), person(F2, L, gender(female), _, _), children([person(CF1, L, _, _, _), person(CF2, L, _, _, _), person(CF3, L, _, _, _)|Rest])),
+	write("family: "), write(L),
+	write("\nfather: "), write(F1),
+	write("\nmother: "), write(F2),
+	write("\nchildren:\n"), 
+	write(CF1),
+	write("\n"),
+	write(CF2),
+	write("\n"),
+	write(CF3),
+	print(Rest).
+
+
+print([]).
+
+print(R):-
+	[person(CFn, _, _, _, _)|Rest]=R,
+	write("\n"),
+	write(CFn),
+	print(Rest).
